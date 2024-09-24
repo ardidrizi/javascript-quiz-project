@@ -57,15 +57,12 @@ class Quiz {
 
   averageDifficulty() {
     if (this.questions.length === 0) {
-      return 0; // Handle case with no questions
+      return 0;
     }
 
-    let totalDifficulty = 0;
-
-    // Iterate through each question and sum up the difficulties
-    for (let i = 0; i < this.questions.length; i++) {
-      totalDifficulty += this.questions[i].difficulty;
-    }
+    let totalDifficulty = this.questions.reduce((acc, question) => {
+      return acc + question.difficulty;
+    }, 0);
 
     return totalDifficulty / this.questions.length;
   }
